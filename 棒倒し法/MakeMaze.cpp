@@ -29,7 +29,7 @@ vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
 
             while (true) {
                 int direction;
-                if (y == Even)
+                if (y == randomvalue)
                     direction = mt() % 4;
                 else
                     direction = mt() % 3;
@@ -38,16 +38,16 @@ vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
                 int wallY = y;
                 switch (direction) {
                 case 0: // âE
-                    wallX += Even;
+                    wallX += randomvalue;
                     break;
                 case 1: // â∫
-                    wallY += Even;
+                    wallY += randomvalue;
                     break;
                 case 2: // ç∂
-                    wallX -= Even;
+                    wallX -= randomvalue;
                     break;
                 case 3: // è„
-                    wallY -= Even;
+                    wallY -= randomvalue;
                     break;
                 }
 

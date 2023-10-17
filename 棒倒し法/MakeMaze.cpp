@@ -68,7 +68,7 @@ void MakeMaze::DebugMaze(const vector<vector<int>>& maze)
 	std::cout << "Height: " << maze[0].size() << std::endl;
 	for (int y = 0; y < maze[0].size(); y++) {
 		for (int x = 0; x < maze.size(); x++) {
-			std::cout << (maze[x][y] == Wall ? "¡" : "@");
+			std::cout << (maze[x][y] == Wall ? "¡" : "  ");
 		}
 		std::cout << std::endl;
 	}

@@ -13,7 +13,7 @@ vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
 	std::vector<std::vector<int>> maze(width, std::vector<int>(height, Path));
 	for (int x = 0; x < width; x++) {
 		for (int y = 0; y < height; y++) {
-			if (x == 0 || y == 0 || x == width - randomvalue || y == height - randomvalue)
+			if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
 				maze[x][y] = Wall;
 		}
 	}

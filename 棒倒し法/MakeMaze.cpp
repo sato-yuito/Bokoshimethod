@@ -7,47 +7,38 @@ vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
 	{
 		throw out_of_range("迷路のサイズがちいさいので生成しません");
 	}
-	if (width % randomvalue == 0)
-		width += od;
-	if (height % randomvalue == 0)
-		height += od;
+    if (width % 2 == 0) width++;
+    if (height % 2 == 0) height++;
 
 	std::vector<std::vector<int>> maze(width, std::vector<int>(height, Path));
 	for (int x = 0; x < width; x++) {
 		for (int y = 0; y < height; y++) {
 			if (x == 0 || y == 0 || x == width - randomvalue || y == height - randomvalue)
 				maze[x][y] = Wall;
-			else
-				maze[x][y] = Path;
 		}
 	}
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    for (int x = randomvalue; x < width - randomvalue; x += randomvalue) {
-        for (int y = randomvalue; y < height - randomvalue; y += randomvalue) {
+    for (int x = 2; x < width - 1; x += 2) {
+        for (int y = 2; y < height - 1; y += 2) {
             maze[x][y] = Wall;
 
             while (true) {
-                int direction;
-                if (y == randomvalue)
-                    direction = mt() % 4;
-                else
-                    direction = mt() % 3;
+                int direction = (y == 2) ? std::rand() % 4 : std::rand() % 3;
 
                 int wallX = x;
                 int wallY = y;
+
                 switch (direction) {
                 case 0: // 右
-                    wallX += randomvalue;
+                    wallX++;
                     break;
                 case 1: // 下
-                    wallY += randomvalue;
+                    wallY++;
                     break;
                 case 2: // 左
-                    wallX -= randomvalue;
+                    wallX--;
                     break;
                 case 3: // 上
-                    wallY -= randomvalue;
+                    wallY--;
                     break;
                 }
 
@@ -60,16 +51,19 @@ vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
     }
 
     return maze;
+
+    return maze;
 }
 
-void MakeMaze::DebugMaze(const vector<vector<int>>& maze)
+void MakeMaze::DebugPrint(const vector<vector<int>>& maze)
 {
-	std::cout << "Width: " << maze.size() << std::endl;
-	std::cout << "Height: " << maze[0].size() << std::endl;
-	for (int y = 0; y < maze[0].size(); y++) {
-		for (int x = 0; x < maze.size(); x++) {
-			std::cout << (maze[x][y] == Wall ? "■" : "  ");
-		}
-		std::cout << std::endl;
-	}
+    std::cout << "Width: " << maze.size() << std::endl;
+    std::cout << "Height: " << maze[0].size() << std::endl;
+
+    for (size_t y = 0; y < maze[0].size(); y++) {
+        for (size_t x = 0; x < maze.size(); x++) {
+            std::cout << (maze[x][y] == Wall ? "■" : "　");
+        }
+        std::cout << std::endl;
+    }
 }

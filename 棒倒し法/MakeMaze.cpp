@@ -51,8 +51,6 @@ vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
     }
 
     return maze;
-
-    return maze;
 }
 
 void MakeMaze::DebugPrint(const vector<vector<int>>& maze)

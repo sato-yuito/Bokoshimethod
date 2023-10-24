@@ -1,10 +1,12 @@
 #include"MakeMaze.h"
 
+
 int main()
 {
-	int width = 15;
-	int height = 15;
-	std::vector<std::vector<int>> maze = MakeMaze::GenerativeMaze(width, height);
-	
-	return 0;
+    MakeMaze makemaze;
+    int width = 15;
+    int height = 15;
+    std::vector<std::vector<int>> maze = makemaze.GenerativeMaze(width, height);
+    makemaze.DebugPrint(maze);
+    return 0;
 }

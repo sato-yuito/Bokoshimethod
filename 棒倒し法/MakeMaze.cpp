@@ -53,6 +53,12 @@ vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
     return maze;
 }
 
+void MakeMaze::AStarMaze(const std::vector<std::vector<int>>& maze, int width, int height)
+{
+    std::priority_queue<Cell, std::vector<Cell>, std::greater<Cell>> openSet;
+    std::vector<std::vector<Cell>> cameFrom(maze.size(), std::vector<Cell>(maze[0].size()));
+}
+
 void MakeMaze::DebugPrint(const vector<vector<int>>& maze)
 {
     std::cout << "Width: " << maze.size() << std::endl;

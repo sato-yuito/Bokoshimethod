@@ -2,7 +2,8 @@
 
 vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
 {
-	const int sizeMaze = 5;//5ÇÊÇËè¨Ç≥Ç©Ç¡ÇΩÇÁê∂ê¨ÇµÇ»Ç¢
+    srand(time(NULL));
+    const int sizeMaze = 5;//5ÇÊÇËè¨Ç≥Ç©Ç¡ÇΩÇÁê∂ê¨ÇµÇ»Ç¢
 	if (height < sizeMaze || width < sizeMaze)
 	{
 		throw out_of_range("ñ¿òHÇÃÉTÉCÉYÇ™ÇøÇ¢Ç≥Ç¢ÇÃÇ≈ê∂ê¨ÇµÇ‹ÇπÇÒ");
@@ -50,6 +51,11 @@ vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
         }
     }
 
+    // Mark start and goal cells
+    maze[1][1] = Start;
+    maze[width - 2][height - 2] = Goal;
+
+    
     return maze;
 }
 
@@ -66,7 +72,23 @@ void MakeMaze::DebugPrint(const vector<vector<int>>& maze)
 
     for (size_t y = 0; y < maze[0].size(); y++) {
         for (size_t x = 0; x < maze.size(); x++) {
-            std::cout << (maze[x][y] == Wall ? "Å°" : "Å@");
+            switch (maze[x][y]) {
+            case Path:
+                std::cout << "Å@";
+                break;
+            case Wall:
+                std::cout << "Å°";
+                break;
+            case Start:
+                std::cout << "Çr";
+                break;
+            case Goal:
+                std::cout << "Çf";
+                break;
+            default:
+                std::cout << "X";
+                break;
+            }
         }
         std::cout << std::endl;
     }

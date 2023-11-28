@@ -59,25 +59,6 @@ vector<vector<int>> MakeMaze::GenerativeMaze(int width, int height)
     return maze;
 }
 
-void MakeMaze::AStarMaze(const std::vector<std::vector<int>>& maze, int width, int height)
-{
-    std::priority_queue<Cell, std::vector<Cell>, std::greater<Cell>> openSet;
-    std::vector<std::vector<Cell>> cameFrom(maze.size(), std::vector<Cell>(maze[0].size()));
-    openSet.push({ 0,0,0 });
-    while (!openSet.empty())
-    {
-        auto current = openSet.top();
-        openSet.pop();
-        if (current.x = width - 1 && current.y == height - 1)
-        {
-            break;
-        }
-        for (int dx = -1; dx <= 1; dx++)
-        {
-            for()
-        }
-    }
-}
 
 void MakeMaze::DebugPrint(const vector<vector<int>>& maze)
 {

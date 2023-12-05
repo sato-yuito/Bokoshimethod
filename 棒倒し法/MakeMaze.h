@@ -24,10 +24,12 @@ struct Cell {
 
 class MakeMaze
 {
+protected:
+	int width;
+	int height;
 public:
 	
 	static vector<vector<int>>GenerativeMaze(int width, int height);//–À˜H‚ğ¶¬‚·‚éŠÖ”
-	void AStarMaze(const std::vector<std::vector<int>>& maze, int width, int height);//A*ƒAƒ‹ƒSƒŠƒYƒ€‚ÌÀ‘•
 	void DebugPrint(const std::vector<std::vector<int>>& maze);
 
 };

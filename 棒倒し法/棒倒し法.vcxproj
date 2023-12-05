@@ -127,9 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Astar.h" />
     <ClInclude Include="MakeMaze.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Astar.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MakeMaze.cpp" />
   </ItemGroup>

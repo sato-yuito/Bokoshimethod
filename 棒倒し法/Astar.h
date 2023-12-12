@@ -1,12 +1,12 @@
 #pragma once
 #include"MakeMaze.h"
-struct Cell
+struct cell :public Cell
 {
 	int x, y;//セルの座標
 	int g, h, f;//コスト計算に必要な奴
 	Cell* parent;
 	
-	Cell(int x, int y) :x(x), y(y), g(0), h(0), f(0), parent(nullptr){}
+	cell(int x, int y) :x(x), y(y), g(0), h(0), f(0), parent(nullptr){}
 	bool operator<(const Cell& other)const
 	{
 		return f > other.f;

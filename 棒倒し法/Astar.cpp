@@ -11,38 +11,39 @@ int Astar::Heuristic(int x1, int Y1, int x2, int y2)
 	return std::abs(x1 - x2) + std::abs(Y1 - y2);
 }
 
-std::vector<Cell> Astar::GetNeighbors(const Cell& cell, const std::vector<std::vector<int>>& maze)
+std::vector< AStarCell> Astar::GetNeighbors(const  AStarCell& currentCell, const std::vector<std::vector<int>>& maze)
 {
-	std::vector<Cell>Neighbors;
+	std::vector< AStarCell> neighbors;
 
 	int dx[] = { 0,1,0,-1 };
 	int dy[] = { -1,0,1,0 };
 
 	for (int i = 0; i < 4; ++i)
 	{
-		int ix = cell.x + dx[i];
-		int iY = cell.y + dx[i];
-		if (IsVaild(ix, i, maze))
+		int ix = currentCell.x + dx[i];
+		int iY = currentCell.y + dx[i];
+		if (IsVaild(ix, iY, maze))
 		{
-			Neighbors.emplace_back(ix, iY);
+			neighbors.emplace_back(ix, iY);
 		}
 	}
-	return Neighbors;
+	return neighbors;
 }
 
-std::vector<Cell> Astar::FindPath(const std::vector<std::vector<int>>& maze, int startX, int startY, int goalX, int goalY)
+
+std::vector< AStarCell> Astar::FindPath(const std::vector<std::vector<int>>& maze, int startX, int startY, int goalX, int goalY)
 {
-	std::priority_queue<Cell> openSet;
+	std::priority_queue< AStarCell> openSet;
 	std::vector<std::vector<bool>> closeSet(maze.size(),std::vector<bool>(maze[0].size(), false));
 
-	Cell start(startX, startY);
-	Cell goal(goalX, goalY);
+	AStarCell start(startX, startY);
+	AStarCell goal(goalX, goalY);
 	openSet.push(start);
 	
 
 	while (!openSet.empty())
 	{
-		Cell current = openSet.top();
+		AStarCell current = openSet.top();
 		openSet.pop();
 		if (current.x == goalX && current.y == goalY)
 		{
@@ -75,13 +76,13 @@ std::vector<Cell> Astar::FindPath(const std::vector<std::vector<int>>& maze, int
 		}
 
 	}
-	return std::vector<Cell>();
+	return std::vector< AStarCell>();
 }
 
 
-std::vector<Cell> Astar::ReconstructPath(const Cell& goal) {
-	std::vector<Cell> path;
-	for (const Cell* current = &goal; current != nullptr; current = current->parent) {
+std::vector< AStarCell> Astar::ReconstructPath(const  AStarCell& goal) {
+	std::vector< AStarCell> path;
+	for (const  AStarCell* current = &goal; current != nullptr; current = current->parent) {
 		path.push_back(*current);
 	}
 	std::reverse(path.begin(), path.end());

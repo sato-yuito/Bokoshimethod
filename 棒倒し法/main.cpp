@@ -8,10 +8,10 @@ int main() {
     int width, height;
 
     // ユーザーに迷路の幅と高さを入力させる
-    std::cout << "Enter the width of the maze: ";
+    std::cout << "好きな幅を入力してください: ";
     std::cin >> width;
 
-    std::cout << "Enter the height of the maze: ";
+    std::cout << "好きな高さを入力してください: ";
     std::cin >> height;
 
     // MakeMazeクラスを使用して迷路を生成
@@ -20,5 +20,8 @@ int main() {
     // 生成した迷路をデバッグプリント
     makemaze.DebugPrint(maze);
 
+    
+
+    
     return 0;
 }

@@ -14,17 +14,19 @@ const int Start = 2;
 const int Goal = 3;
 const int Visited = 4;
 
-struct Cell {
-	int x, y, f, g, h;
-	// ソートのための比較演算子を定義
-	bool operator>(const Cell& other) const {
-		return f > other.f;
-	}
-};
+
 
 class MakeMaze
 {
 protected:
+	struct Cell {
+		int x, y, f, g, h;
+		// ソートのための比較演算子を定義
+		bool operator>(const Cell& other) const {
+			return f > other.f;
+		}
+	};
+
 	int width;
 	int height;
 public:

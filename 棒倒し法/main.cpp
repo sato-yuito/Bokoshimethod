@@ -1,9 +1,10 @@
 #include "MakeMaze.h"
-#include"Astar.h"
+#include "Astar.h"
 #include <iostream>
 
 int main() {
     MakeMaze makemaze;
+    Astar astar;
 
     int width, height;
 
@@ -20,8 +21,28 @@ int main() {
     // 生成した迷路をデバッグプリント
     makemaze.DebugPrint(maze);
 
-    
+   
+    int startX, startY, goalX, goalY;
 
-    
+    std::cout << "スタート位置 (x y): ";
+    std::cin >> startX >> startY;
+
+    std::cout << "ゴール位置 (x y): ";
+    std::cin >> goalX >> goalY;
+
+    std::vector<AStarCell> path = astar.FindPath(maze, startX, startY, goalX, goalY);
+
+    if (!path.empty()) {
+        std::cout << "Found path: ";
+        for (const auto& cell : path) {
+            std::cout << "(" << cell.x << ", " << cell.y << ") ";
+        }
+        std::cout << std::endl;
+    }
+    else {
+        std::cout << "Path not found." << std::endl;
+    }
+
     return 0;
 }
+
